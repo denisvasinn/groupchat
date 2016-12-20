@@ -14,6 +14,9 @@ server.listen(app.get('port'), () => {
 
 //
 let index = require('./routes/index');
+let socketHandler = require('./routes/socketHandler');
+
+io.on('connect', socketHandler);
 
 //View engine
 app.set('views', path.join(__dirname, 'views'));
