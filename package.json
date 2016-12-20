@@ -1,0 +1,30 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "simple group chat application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denisvasinn/groupchat.git"
+  },
+  "author": "Denis Vasin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denisvasinn/groupchat/issues"
+  },
+  "homepage": "https://github.com/denisvasinn/groupchat#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.5",
+    "express": "^5.0.0-alpha.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.0.0",
+    "gulp-typescript": "^3.1.3",
+    "mongoose": "^4.7.4",
+    "socket.io": "^1.7.2",
+    "typescript": "^2.1.4"
+  }
+}
