@@ -159,3 +159,14 @@ ul{ list-style-type: none; }
     background: transparent;
     color: $primary-color;
 }
+
+@media screen and (max-width: 600px){
+    .message-window{
+        width: 100%;
+    }
+    .input{
+        form{
+            flex-basis: 100%;
+        }
+    }
+}

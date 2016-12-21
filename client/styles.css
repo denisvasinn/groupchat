@@ -129,3 +129,9 @@ ul {
 .btn:hover {
   background: transparent;
   color: #96659b; }
+
+@media screen and (max-width: 600px) {
+  .message-window {
+    width: 100%; }
+  .input form {
+    flex-basis: 100%; } }
