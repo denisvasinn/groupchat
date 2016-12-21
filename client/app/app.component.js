@@ -19,7 +19,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'app',
-        template: "\n  <header>\n    <div id='bar' [ngStyle]='{\"background-position\": scroll}' (window:scroll)='onScroll($event)'></div>\n  </header>\n  <article class='conteiner'>\n    <chat></chat>\n  </article>\n  <footer>\n  </footer>\n  "
+        template: "\n  <header>\n  </header>\n  <article class='conteiner'>\n    <chat></chat>\n  </article>\n  <footer>\n    <div id='bar' [ngStyle]='{\"background-position\": scroll}' (window:scroll)='onScroll($event)'></div>\n  </footer>\n  "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

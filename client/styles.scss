@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
-$primary-color: #42aaf4;
+$primary-color: #96659b;
 $secondary-color: #777;
 $border-radius: 2px;
 
@@ -27,7 +27,7 @@ body{
     background-size: cover;
     height: 7px;
     position: fixed;
-    top: 0;
+    bottom: 0;
     overflow: hidden;
     width: 100%;
     z-index: 1;
@@ -37,7 +37,7 @@ a, a:hover{ text-decoration: none; }
 
 ul{ list-style-type: none; }
 
-.messages{
+.message-window{
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -46,13 +46,18 @@ ul{ list-style-type: none; }
     width: 60%;
 }
 
+.messages{
+    width: 100%;
+}
+
 .message{
     display: flex;
     margin: 10px;
     width: 100%;
 
     .info{
-        flex-grow: 0.3;
+        flex-grow: 0.4;
+        margin: 10px 0;
         a{
             display: block;
             color: $secondary-color;
@@ -65,6 +70,7 @@ ul{ list-style-type: none; }
     }
     .photo{
         flex-basis: 60px;
+        margin: 10px;
         img{
             border-radius: 50px;
             height: 50px;
@@ -75,7 +81,10 @@ ul{ list-style-type: none; }
     p{
         border-radius: $border-radius;
         color: $secondary-color;
-        flex-grow: 5;
+        flex-grow: 2;
+        flex-basis: 60%;
+        flex-shrink: 1;
+        overflow: hidden;
         margin: 0 20px;
         padding: 10px;
     }
@@ -104,19 +113,49 @@ ul{ list-style-type: none; }
     }
 }
 
+.input{
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+
+    form{
+        display: flex;
+        align-items: center;
+        flex-basis: 60%;
+        #content{
+            margin-right: 10px;
+        }
+    }
+}
+
 .form-control{
-    border: 1px solid $secondary-color;
-    border-radius: $border-radius;
+    border: none;
+    border-left: 2px solid $primary-color;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1em;
     padding: 10px;
     height: 100px;
-    width: 300px;
+    width: 90%;
 }
 
 .btn{
     background: $primary-color;
-    border: 0;
+    border: 1px solid $primary-color;
     border-radius: $border-radius;
     color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1em;
     height: 40px;
+    transition: all 0.2s ease-in-out;
     width: 100px;
+}
+
+.btn:hover{
+    background: transparent;
+    color: $primary-color;
 }

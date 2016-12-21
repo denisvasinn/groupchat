@@ -6,31 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var message_1 = require("./message");
 var ChatMessageComponent = (function () {
     function ChatMessageComponent() {
-        this.message = new message_1.Message();
-        console.log(this._user);
-        console.log(this.message);
     }
-    Object.defineProperty(ChatMessageComponent.prototype, "user", {
-        get: function () { return this._user; },
-        set: function (user) {
-            this._user = user;
-        },
-        enumerable: true,
-        configurable: true
-    });
+    ChatMessageComponent.prototype.ngOnInit = function () {
+        console.log(this.message);
+    };
     return ChatMessageComponent;
 }());
-__decorate([
-    core_1.Input()
-], ChatMessageComponent.prototype, "user");
 ChatMessageComponent = __decorate([
     core_1.Component({
         selector: 'chat-message',
-        template: "\n    <li class='message'>\n        <div class='info'>\n          <a href='#'>{{message.author.name}}</a>\n          <span>{{message.date | date}}</span>\n        </div>\n        <a class='photo' href='#'>\n          <img src='images/photo.png' alt='User photo' title=''>\n        </a>\n        <p>{{message.content}}</p>\n      </li>\n      {{user.name}}\n    ",
-        inputs: ['message']
+        template: "\n    <li class='message' [ngClass]='message.author.uid==currentUser.uid?\"author-message\":\"user-message\"'>\n        <div class='info'>\n          <a href='#'>{{message.author.name}}</a>\n          <span>{{message.date | date}}</span>\n        </div>\n        <a class='photo' href='#'>\n          <img src='images/photo.png' alt='User photo' title=''>\n        </a>\n        <p>{{message.content}}</p>\n      </li>\n    ",
+        inputs: ['message', 'currentUser']
     })
 ], ChatMessageComponent);
 exports.ChatMessageComponent = ChatMessageComponent;

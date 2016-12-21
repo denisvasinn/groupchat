@@ -1,12 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Message } from './message';
-import { User } from './user';
 
 @Component({
     selector: 'chat-message',
     template: `
-    <li class='message'>
+    <li class='message' [ngClass]='message.author.uid==currentUser.uid?"author-message":"user-message"'>
         <div class='info'>
           <a href='#'>{{message.author.name}}</a>
           <span>{{message.date | date}}</span>
@@ -16,21 +15,17 @@ import { User } from './user';
         </a>
         <p>{{message.content}}</p>
       </li>
-      {{user.name}}
     `,
-    inputs: ['message']
+    inputs: ['message', 'currentUser']
 })
 
-export class ChatMessageComponent{
-    private message: Message = new Message();
-    private _user: User;
-     @Input() 
-     set user(user: User) {
-         this._user = user;
-     }
-     get user(): User { return this._user; }
-    private incoming: boolean;
+export class ChatMessageComponent implements OnInit{
+    private message: Message;
 
-    constructor(){console.log(this._user); console.log(this.message)}
+    constructor(){ }
+
+    ngOnInit(): void{
+        console.log(this.message)
+    }
 
 }

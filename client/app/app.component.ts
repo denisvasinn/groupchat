@@ -3,19 +3,18 @@ import { Observable } from 'rxjs/Observable';
 
 import { ChatComponent } from './chat.component';
 
-
 import { User } from './user';
 
 @Component({
   selector: 'app',
   template: `
   <header>
-    <div id='bar' [ngStyle]='{"background-position": scroll}' (window:scroll)='onScroll($event)'></div>
   </header>
   <article class='conteiner'>
     <chat></chat>
   </article>
   <footer>
+    <div id='bar' [ngStyle]='{"background-position": scroll}' (window:scroll)='onScroll($event)'></div>
   </footer>
   `
 })

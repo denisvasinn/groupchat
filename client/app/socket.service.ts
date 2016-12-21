@@ -27,8 +27,8 @@ export class SocketService{
         return this;
     }
 
-    getMessages(): Observable<any>{
-        let observable = new Observable((observer: any) => {
+    getMessages(): Observable<Message>{
+        let observable = new Observable<Message>((observer: any) => {
             this.socket.on('message', (data: Message) => observer.next(data));
         });
         return observable;

@@ -21,7 +21,7 @@ body {
   background-size: cover;
   height: 7px;
   position: fixed;
-  top: 0;
+  bottom: 0;
   overflow: hidden;
   width: 100%;
   z-index: 1; }
@@ -32,7 +32,7 @@ a, a:hover {
 ul {
   list-style-type: none; }
 
-.messages {
+.message-window {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -40,12 +40,16 @@ ul {
   margin: 0 auto;
   width: 60%; }
 
+.messages {
+  width: 100%; }
+
 .message {
   display: flex;
   margin: 10px;
   width: 100%; }
   .message .info {
-    flex-grow: 0.3; }
+    flex-grow: 0.4;
+    margin: 10px 0; }
     .message .info a {
       display: block;
       color: #777;
@@ -54,7 +58,8 @@ ul {
       color: #777;
       font-size: 0.7em; }
   .message .photo {
-    flex-basis: 60px; }
+    flex-basis: 60px;
+    margin: 10px; }
     .message .photo img {
       border-radius: 50px;
       height: 50px;
@@ -62,7 +67,10 @@ ul {
   .message p {
     border-radius: 2px;
     color: #777;
-    flex-grow: 5;
+    flex-grow: 2;
+    flex-basis: 60%;
+    flex-shrink: 1;
+    overflow: hidden;
     margin: 0 20px;
     padding: 10px; }
 
@@ -82,17 +90,42 @@ ul {
     background: #daf2e7;
     order: 1; }
 
+.input {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px; }
+  .input form {
+    display: flex;
+    align-items: center;
+    flex-basis: 60%; }
+    .input form #content {
+      margin-right: 10px; }
+
 .form-control {
-  border: 1px solid #777;
-  border-radius: 2px;
+  border: none;
+  border-left: 2px solid #96659b;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1em;
   padding: 10px;
   height: 100px;
-  width: 300px; }
+  width: 90%; }
 
 .btn {
-  background: #42aaf4;
-  border: 0;
+  background: #96659b;
+  border: 1px solid #96659b;
   border-radius: 2px;
   color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1em;
   height: 40px;
+  transition: all 0.2s ease-in-out;
   width: 100px; }
+
+.btn:hover {
+  background: transparent;
+  color: #96659b; }
