@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
+
+import { Message } from './message';
+
 @Injectable()
 
 export class SocketService{
@@ -11,20 +14,22 @@ export class SocketService{
 
     connect(){
         this.socket = io(this.uri);
-        return this.socket;
+        return this;
     }
 
-    disconnect(): void{
+    disconnect(){
         this.socket.emit('disconnect');
+        return this;
     }
 
-    send(message: any){
-        this.socket.on('add-message', message);
+    send(message: Message){
+        this.socket.emit('add-message', message);
+        return this;
     }
 
     getMessages(): Observable<any>{
         let observable = new Observable((observer: any) => {
-            this.socket.on('message', (data: any) => observer.next(data));
+            this.socket.on('message', (data: Message) => observer.next(data));
         });
         return observable;
     }

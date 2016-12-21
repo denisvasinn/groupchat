@@ -1,18 +1,33 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
-import { SocketService } from './socket.service';
+import { ChatComponent } from './chat.component';
+
+
+import { User } from './user';
 
 @Component({
-  selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
-  providers: [SocketService]
+  selector: 'app',
+  template: `
+  <header>
+    <div id='bar' [ngStyle]='{"background-position": scroll}' (window:scroll)='onScroll($event)'></div>
+  </header>
+  <article class='conteiner'>
+    <chat></chat>
+  </article>
+  <footer>
+  </footer>
+  `
 })
 export class AppComponent implements OnInit{
-   private name = 'Chat';
+   private scroll: string;
 
-   constructor(@Inject(SocketService) private socketService: SocketService){ }
+   constructor(){ }
 
-   ngOnInit(): void{
-     this.socketService.connect();
+   ngOnInit(): void{ }
+
+   onScroll(event: any){
+     let step = 100/event.view.scrollMaxY;
+     this.scroll = `left ${event.pageY * step}%`;
    }
 }

@@ -14,13 +14,15 @@ var SocketService = (function () {
     }
     SocketService.prototype.connect = function () {
         this.socket = io(this.uri);
-        return this.socket;
+        return this;
     };
     SocketService.prototype.disconnect = function () {
         this.socket.emit('disconnect');
+        return this;
     };
     SocketService.prototype.send = function (message) {
-        this.socket.on('add-message', message);
+        this.socket.emit('add-message', message);
+        return this;
     };
     SocketService.prototype.getMessages = function () {
         var _this = this;

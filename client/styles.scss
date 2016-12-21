@@ -1,3 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+$primary-color: #42aaf4;
+$secondary-color: #777;
+$border-radius: 2px;
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body{
-    background: #aaa;
+    background: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+.block{
+    display: block;
+    margin: 10px;
+    height: 300px;
+    width: 100%;
+}
+#bar{
+    background: url('./images/background.jpg');
+    background-size: cover;
+    height: 7px;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+}
+
+a, a:hover{ text-decoration: none; }
+
+ul{ list-style-type: none; }
+
+.messages{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.message{
+    display: flex;
+    margin: 10px;
+    width: 100%;
+
+    .info{
+        flex-grow: 0.3;
+        a{
+            display: block;
+            color: $secondary-color;
+            line-height: 1.5em;
+        }
+        span{
+            color: $secondary-color;
+            font-size: 0.7em;
+        }
+    }
+    .photo{
+        flex-basis: 60px;
+        img{
+            border-radius: 50px;
+            height: 50px;
+            width: 50px;
+        }
+    }
+
+    p{
+        border-radius: $border-radius;
+        color: $secondary-color;
+        flex-grow: 5;
+        margin: 0 20px;
+        padding: 10px;
+    }
+}
+
+.message.author-message{
+    justify-content: flex-end;
+
+    p{
+        background: #f7ddca;
+        order: 1;
+    }
+}
+
+.message.user-message{
+    justify-content: flex-start;
+    .info{
+        order: 3;
+    }
+    .photo{
+        order: 2;
+    }
+    p{
+        background: #daf2e7;
+        order: 1;
+    }
+}
+
+.form-control{
+    border: 1px solid $secondary-color;
+    border-radius: $border-radius;
+    padding: 10px;
+    height: 100px;
+    width: 300px;
+}
+
+.btn{
+    background: $primary-color;
+    border: 0;
+    border-radius: $border-radius;
+    color: #fff;
+    height: 40px;
+    width: 100px;
 }
