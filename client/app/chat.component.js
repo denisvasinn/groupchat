@@ -20,16 +20,13 @@ var ChatComponent = (function () {
     }
     ChatComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //let name = prompt('What is your name?');
-        this.currentUser = new user_1.User((Math.random() * 10).toString(), "Denis");
+        var name = prompt('What is your name?');
+        this.currentUser = new user_1.User((Math.random() * 10).toString(), name);
         this.socketService
             .connect()
             .getMessages()
             .subscribe(function (message) { _this.messages.push(message); setTimeout(function () { return _this.scrollToBottom(); }); });
-        this.socketService.send(new message_1.Message('Welcome!', new user_1.User('_0', 'System')));
-        for (var i = 0; i <= 10; i++) {
-            this.socketService.send(new message_1.Message("Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n            Integer sed arcu quis velit semper pulvinar. Praesent aliquam nulla odio, in iaculis quam aliquet ac.\n            Praesent dictum dui ut dui aliquet malesuada. Vivamus eget arcu et turpis efficitur ultrices.\n            Aliquam a luctus urna, a malesuada mauris. Nam efficitur vitae quam volutpat fringilla.", new user_1.User('_0', 'System')));
-        }
+        this.socketService.send(new message_1.Message(name + " joined.", new user_1.User('_0', 'System')));
     };
     ChatComponent.prototype.send = function (event) {
         this.draftMessage.author = this.currentUser;
@@ -38,14 +35,15 @@ var ChatComponent = (function () {
         return false;
     };
     ChatComponent.prototype.scrollToBottom = function () {
-        console.log(this);
+        window.scrollBy(0, window.scrollMaxY);
+        //console.log(window.scrollMaxY);
     };
     return ChatComponent;
 }());
 ChatComponent = __decorate([
     core_1.Component({
         selector: 'chat',
-        template: "\n    <ul class='message-window'>\n        <chat-message class='messages' *ngFor='let message of messages' [message]='message' [currentUser]='currentUser'></chat-message>\n        <div class='input'>\n            <form #messageForm='ngForm' (ngSubmit)='send($event)'>\n                <textarea class='form-control' placeholder='Write your message....' name='content' id='content'\n                [(ngModel)]='draftMessage.content' #content='ngModel' (keydown.enter)='send($event)'></textarea>\n                <input type='submit' class='btn' value='Submit'>\n            </form>\n        </div>\n    </ul>\n    ",
+        template: "\n    <ul class='chat-window'>\n        <chat-message class='chat-messages' *ngFor='let message of messages' [message]='message' [currentUser]='currentUser'></chat-message>\n    </ul>\n    <div >\n        <form class='chat-input' #messageForm='ngForm' (ngSubmit)='send($event)'>\n            <textarea class='form-control' placeholder='Write your message....' name='content' id='content'\n            [(ngModel)]='draftMessage.content' #content='ngModel' (keydown.enter)='send($event)'></textarea>\n            <input type='submit' class='btn' value='Submit'>\n        </form>\n    </div>\n    ",
         providers: [socket_service_1.SocketService]
     }),
     __param(0, core_1.Inject(socket_service_1.SocketService))

@@ -16,12 +16,7 @@ body{
     display: flex;
     flex-direction: column;
 }
-.block{
-    display: block;
-    margin: 10px;
-    height: 300px;
-    width: 100%;
-}
+
 #bar{
     background: url('./images/background.jpg');
     background-size: cover;
@@ -37,99 +32,82 @@ a, a:hover{ text-decoration: none; }
 
 ul{ list-style-type: none; }
 
-.message-window{
-    align-items: center;
+.chat{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap; 
     justify-content: center;
-    margin: 0 auto;
-    width: 60%;
+}
+.chat-window{
+    flex-basis: 600px;
+    flex-shrink: 1;
+    margin-bottom: 120px;
 }
 
-.messages{
-    width: 100%;
-}
-
-.message{
+.chat-message{
+    align-items: stretch;
     display: flex;
-    margin: 10px;
-    width: 100%;
-
-    .info{
-        flex-grow: 0.4;
-        margin: 10px 0;
-        a{
-            display: block;
-            color: $secondary-color;
-            line-height: 1.5em;
-        }
-        span{
-            color: $secondary-color;
-            font-size: 0.7em;
-        }
+    flex-wrap: wrap;
+    .message-info, .message-photo, p { flex-shrink: 1; margin: 10px; }
+    .message-info{
+        flex-basis: 50px;
+        flex-grow: 0.5;
     }
-    .photo{
-        flex-basis: 60px;
-        margin: 10px;
-        img{
-            border-radius: 50px;
-            height: 50px;
-            width: 50px;
-        }
+    .message-info > a{ color: $primary-color; }
+    .message-info > span{ display: block; }
+    .message-photo{
+        flex-basis: 50px;
+        flex-grow: 0.5;
     }
-
+    .message-photo > img{
+        border-radius: 50px;
+        height: 50px;
+        width: 50px;
+    }
     p{
-        border-radius: $border-radius;
-        color: $secondary-color;
+        flex-basis: 300px;
         flex-grow: 2;
-        flex-basis: 60%;
-        flex-shrink: 1;
-        overflow: hidden;
-        margin: 0 20px;
         padding: 10px;
     }
 }
 
-.message.author-message{
+.chat-message.author-message{
     justify-content: flex-end;
-
     p{
         background: #f7ddca;
         order: 1;
     }
 }
 
-.message.user-message{
+.chat-message.user-message{
     justify-content: flex-start;
-    .info{
-        order: 3;
-    }
-    .photo{
-        order: 2;
-    }
+    .message-info{ order: 3; }
+    .message-photo{ order: 2; }
     p{
         background: #daf2e7;
         order: 1;
     }
 }
 
-.input{
+.chat-input{
     background: #fff;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: 7px;
     right: 0;
+    left: 0;
     height: 100px;
 
-    form{
-        display: flex;
-        align-items: center;
-        flex-basis: 60%;
-        #content{
-            margin-right: 10px;
-        }
+    .form-control{
+        flex-basis: 500px;
+        flex-shrink: 1;
+    }
+    .btn{
+        flex-basis: 100px;
+        flex-shrink: 1;
     }
 }
 
@@ -158,15 +136,4 @@ ul{ list-style-type: none; }
 .btn:hover{
     background: transparent;
     color: $primary-color;
-}
-
-@media screen and (max-width: 600px){
-    .message-window{
-        width: 100%;
-    }
-    .input{
-        form{
-            flex-basis: 100%;
-        }
-    }
 }

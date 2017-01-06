@@ -8,7 +8,7 @@ import { Message } from './message';
 
 export class SocketService{
     private socket: any;
-    private uri: string = 'https://simple-group-chat.herokuapp.com/';
+    private uri: string = 'http://localhost:3000';
 
     constructor(){ }
 

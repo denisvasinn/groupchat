@@ -10,7 +10,7 @@ var Observable_1 = require("rxjs/Observable");
 var io = require("socket.io-client");
 var SocketService = (function () {
     function SocketService() {
-        this.uri = 'https://simple-group-chat.herokuapp.com/';
+        this.uri = 'http://localhost:3000';
     }
     SocketService.prototype.connect = function () {
         this.socket = io(this.uri);

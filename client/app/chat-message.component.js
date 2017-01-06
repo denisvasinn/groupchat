@@ -9,15 +9,13 @@ var core_1 = require("@angular/core");
 var ChatMessageComponent = (function () {
     function ChatMessageComponent() {
     }
-    ChatMessageComponent.prototype.ngOnInit = function () {
-        console.log(this.message);
-    };
+    ChatMessageComponent.prototype.ngOnInit = function () { };
     return ChatMessageComponent;
 }());
 ChatMessageComponent = __decorate([
     core_1.Component({
         selector: 'chat-message',
-        template: "\n    <li class='message' [ngClass]='message.author.uid==currentUser.uid?\"author-message\":\"user-message\"'>\n        <div class='info'>\n          <a href='#'>{{message.author.name}}</a>\n          <span>{{message.date | date}}</span>\n        </div>\n        <a class='photo' href='#'>\n          <img src='images/photo.png' alt='User photo' title=''>\n        </a>\n        <p>{{message.content}}</p>\n      </li>\n    ",
+        template: "\n    <li class='chat-message' [ngClass]='message.author.uid==currentUser.uid?\"author-message\":\"user-message\"'>\n        <div class='message-info'>\n          <a href='#'>{{message.author.name}}</a>\n          <span>{{message.date | date}}</span>\n        </div>\n        <a class='message-photo' href='#'>\n          <img src='images/photo.png' alt='User photo' title=''>\n        </a>\n        <p>{{message.content}}</p>\n    </li>\n    ",
         inputs: ['message', 'currentUser']
     })
 ], ChatMessageComponent);

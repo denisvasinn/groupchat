@@ -9,7 +9,6 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () { };
     AppComponent.prototype.onScroll = function (event) {
         var step = 100 / event.view.scrollMaxY;
         this.scroll = "left " + event.pageY * step + "%";
@@ -19,7 +18,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'app',
-        template: "\n  <header>\n  </header>\n  <article class='conteiner'>\n    <chat></chat>\n  </article>\n  <footer>\n    <div id='bar' [ngStyle]='{\"background-position\": scroll}' (window:scroll)='onScroll($event)'></div>\n  </footer>\n  "
+        template: "\n  <header>\n  </header>\n  <article>\n    <chat class='chat'></chat>\n  </article>\n  <footer>\n    <div id='bar' [ngStyle]='{\"background-position\": scroll}' (window:scroll)='onScroll($event)'></div>\n  </footer>\n  "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

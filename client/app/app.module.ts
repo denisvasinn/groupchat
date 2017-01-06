@@ -7,12 +7,12 @@ import { ChatComponent } from './chat.component';
 import { ChatMessageComponent } from './chat-message.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
+  imports: [ BrowserModule, FormsModule ],
   declarations: [ 
     AppComponent,
     ChatComponent,
     ChatMessageComponent
     ],
-  bootstrap:    [ AppComponent ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
