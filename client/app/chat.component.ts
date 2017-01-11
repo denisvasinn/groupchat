@@ -11,7 +11,7 @@ import { User } from './user';
     selector: 'chat',
     template: `
     <ul class='chat-window'>
-        <chat-message class='chat-messages' *ngFor='let message of messages' [message]='message' [currentUser]='currentUser'></chat-message>
+        <chat-message class='chat-messages' *ngFor='let message of messages' [message]='message' [currentUser]='currentUser' (click)='sendTo($event)'></chat-message>
     </ul>
     <div >
         <form class='chat-input' #messageForm='ngForm' (ngSubmit)='send($event)'>
@@ -33,7 +33,8 @@ export class ChatComponent implements OnInit{
     constructor(@Inject(SocketService) private socketService: SocketService){ }
 
     ngOnInit(): void{
-        let name = prompt('What is your name?');
+        let name;
+        while (!name){ name = prompt('What is your name?'); }
         this.currentUser = new User((Math.random()*10).toString(), name);
         this.socketService
         .connect()
@@ -51,8 +52,11 @@ export class ChatComponent implements OnInit{
    }
 
     scrollToBottom(): void {
-        window.scrollBy(0, window.scrollMaxY);
-        //console.log(window.scrollMaxY);
-        
+        window.scrollBy(0, window['scrollMaxY'] || 5000);
+    }
+
+    sendTo(event: any){
+        let to = event.target.childNodes[0].data + ', ';
+        this.draftMessage = new Message(to, this.currentUser);
     }
 }

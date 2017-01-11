@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Message } from './message';
 
@@ -19,11 +19,8 @@ import { Message } from './message';
     inputs: ['message', 'currentUser']
 })
 
-export class ChatMessageComponent implements OnInit{
+export class ChatMessageComponent{
     private message: Message;
 
     constructor(){ }
-
-    ngOnInit(): void{ }
-
 }

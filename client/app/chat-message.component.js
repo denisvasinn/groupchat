@@ -9,7 +9,6 @@ var core_1 = require("@angular/core");
 var ChatMessageComponent = (function () {
     function ChatMessageComponent() {
     }
-    ChatMessageComponent.prototype.ngOnInit = function () { };
     return ChatMessageComponent;
 }());
 ChatMessageComponent = __decorate([

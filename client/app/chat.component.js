@@ -20,7 +20,10 @@ var ChatComponent = (function () {
     }
     ChatComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var name = prompt('What is your name?');
+        var name;
+        while (!name) {
+            name = prompt('What is your name?');
+        }
         this.currentUser = new user_1.User((Math.random() * 10).toString(), name);
         this.socketService
             .connect()
@@ -35,15 +38,18 @@ var ChatComponent = (function () {
         return false;
     };
     ChatComponent.prototype.scrollToBottom = function () {
-        window.scrollBy(0, window.scrollMaxY);
-        //console.log(window.scrollMaxY);
+        window.scrollBy(0, window['scrollMaxY'] || 5000);
+    };
+    ChatComponent.prototype.sendTo = function (event) {
+        var to = event.target.childNodes[0].data + ', ';
+        this.draftMessage = new message_1.Message(to, this.currentUser);
     };
     return ChatComponent;
 }());
 ChatComponent = __decorate([
     core_1.Component({
         selector: 'chat',
-        template: "\n    <ul class='chat-window'>\n        <chat-message class='chat-messages' *ngFor='let message of messages' [message]='message' [currentUser]='currentUser'></chat-message>\n    </ul>\n    <div >\n        <form class='chat-input' #messageForm='ngForm' (ngSubmit)='send($event)'>\n            <textarea class='form-control' placeholder='Write your message....' name='content' id='content'\n            [(ngModel)]='draftMessage.content' #content='ngModel' (keydown.enter)='send($event)'></textarea>\n            <input type='submit' class='btn' value='Submit'>\n        </form>\n    </div>\n    ",
+        template: "\n    <ul class='chat-window'>\n        <chat-message class='chat-messages' *ngFor='let message of messages' [message]='message' [currentUser]='currentUser' (click)='sendTo($event)'></chat-message>\n    </ul>\n    <div >\n        <form class='chat-input' #messageForm='ngForm' (ngSubmit)='send($event)'>\n            <textarea class='form-control' placeholder='Write your message....' name='content' id='content'\n            [(ngModel)]='draftMessage.content' #content='ngModel' (keydown.enter)='send($event)'></textarea>\n            <input type='submit' class='btn' value='Submit'>\n        </form>\n    </div>\n    ",
         providers: [socket_service_1.SocketService]
     }),
     __param(0, core_1.Inject(socket_service_1.SocketService))
